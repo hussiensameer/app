@@ -34,3 +34,10 @@
 
 الصفحة: https://hussiensameer.github.io/app/raqqim-videos/
 الفيديو: https://hussiensameer.github.io/app/raqqim-videos/videos/raqqim-video-YYYY-MM-DD.mp4
+
+## النشر على إنستا (تلقائي)
+بعد دفع الفيديو لـ `main` شغّل: `python3 raqqim-videos/tools/publish_instagram.py YYYY-MM-DD`
+- يحتاج المتغيرين `IG_ACCESS_TOKEN` و`IG_USER_ID` من إعدادات البيئة (لا تطبعهما ولا تكتبهما بأي ملف).
+- إذا غير موجودين يطبع `SKIP` ويخرج بسلام: ما هو خطأ، بس أخبر حسين إن النشر على إنستا غير مفعّل.
+- يستنى لين الرابط على الصفحة يشتغل، ثم ينشر Reel بالكابشن، ويسجّل الرابط بـ `raqqim-videos/instagram-posted.json` (علّق هذا الملف بـ commit ودفعة ثانية لـ `main`).
+- عند الفشل (يطلع exit 1) الفيديو يبقى على الصفحة، وأخبر حسين بالسبب حرفياً من المخرجات.
