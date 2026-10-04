@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>Raqqim scene</title>
+<style>
+@font-face{font-family:"Plex";font-weight:400;src:url(fonts/ibm-plex-sans-arabic-arabic-400-normal.woff2) format("woff2");unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0898-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC}
+@font-face{font-family:"Plex";font-weight:600;src:url(fonts/ibm-plex-sans-arabic-arabic-600-normal.woff2) format("woff2");unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0898-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC}
+@font-face{font-family:"Plex";font-weight:700;src:url(fonts/ibm-plex-sans-arabic-arabic-700-normal.woff2) format("woff2");unicode-range:U+0600-06FF,U+0750-077F,U+0870-088E,U+0890-0891,U+0898-08E1,U+08E3-08FF,U+200C-200E,U+2010-2011,U+204F,U+2E41,U+FB50-FDFF,U+FE70-FE74,U+FE76-FEFC}
+@font-face{font-family:"Plex";font-weight:400;src:url(fonts/ibm-plex-sans-arabic-latin-400-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Plex";font-weight:600;src:url(fonts/ibm-plex-sans-arabic-latin-600-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Plex";font-weight:700;src:url(fonts/ibm-plex-sans-arabic-latin-700-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"PlexMono";font-weight:500;src:url(fonts/ibm-plex-mono-latin-500-normal.woff2) format("woff2")}
+@font-face{font-family:"PlexMono";font-weight:600;src:url(fonts/ibm-plex-mono-latin-600-normal.woff2) format("woff2")}
+:root{--sand:#faf7f2;--card:#fff;--line:#ded7cb;--teal:#0f7a7e;--teal-d:#0b5f62;--teal-l:#d8eded;--ink:#0e1b24;--mute:#5e6b72;--ok:#17784f;--amber:#f0a93b}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:var(--sand);font-family:"Plex",sans-serif;color:var(--ink)}
+.scene{position:absolute;inset:0;width:1080px;height:1920px;overflow:hidden;background:var(--sand);opacity:0}
+.abs{position:absolute}
+.center{display:flex;flex-direction:column;align-items:center;text-align:center}
+.w{display:inline-block;margin:0 .14em}
+.h1{font-weight:700;font-size:132px;line-height:1.3}
+.card{background:var(--card);border:3px solid var(--line);border-radius:32px}
+.mono{font-family:"PlexMono",monospace;font-weight:600}
+.rk{display:inline-flex}
+svg.ic{fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.75}
+.pill{display:inline-flex;align-items:center;gap:20px;border-radius:999px;font-weight:700}
+</style>
+</head>
+<body>
+
+<!-- S1: problem -->
+<div class="scene" id="s1">
+  <div class="abs center" style="left:0;right:0;top:250px"><div class="h1" id="s1t1"></div><div class="h1" id="s1t2" style="color:var(--teal-d)"></div></div>
+  <div class="abs" id="stack" style="left:190px;top:790px;width:700px;height:760px"></div>
+</div>
+
+<!-- S2: product -->
+<div class="scene" id="s2">
+  <div class="abs center" style="left:0;right:0;top:230px">
+    <div class="pill" id="s2chip" style="background:var(--teal);color:#fff;font-size:92px;padding:14px 64px">رقّم شهادات</div>
+    <div id="s2t" style="font-weight:700;font-size:84px;line-height:1.35;margin-top:44px"></div>
+  </div>
+  <div class="abs" id="grid" style="left:102px;top:760px;width:876px;height:650px"></div>
+  <div class="abs center" style="left:0;right:0;top:1470px"><div class="pill" id="s2qr" style="background:var(--teal-l);color:var(--teal-d);font-size:70px;padding:16px 56px"><span id="s2qri"></span><span>QR للتحقق</span></div></div>
+</div>
+
+<!-- S3: three steps -->
+<div class="scene" id="s3">
+  <div class="abs" style="left:0;right:0;top:215px;display:flex;justify-content:center;align-items:center;gap:36px" id="s3h">
+    <div class="mono" id="s3n" style="font-size:250px;line-height:1;color:var(--teal);width:170px;text-align:center">0</div>
+    <div id="s3tt" style="font-weight:700;font-size:96px;line-height:1.2"></div>
+  </div>
+  <div class="abs" id="phone" style="left:230px;top:520px;width:620px;height:1100px;border:9px solid var(--ink);border-radius:84px;background:#fff;overflow:hidden">
+    <div style="height:120px;background:var(--teal);display:flex;align-items:center;justify-content:center"><span id="s3award"></span></div>
+    <div id="dots" style="display:flex;justify-content:center;gap:34px;margin-top:34px"></div>
+    <div id="panels" style="position:relative;height:790px;margin-top:20px"></div>
+  </div>
+</div>
+
+<!-- S4: CTA -->
+<div class="scene" id="s4">
+  <div class="abs card center" id="s4card" style="left:100px;top:360px;width:880px;height:1000px;justify-content:center;gap:34px">
+    <div style="position:relative;width:240px;height:240px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center"><span id="s4ic"></span><div id="s4dot" style="position:absolute;top:8px;right:8px;width:56px;height:56px;border-radius:50%;background:var(--amber);border:6px solid #fff"></div></div>
+    <div id="s4t1" style="font-weight:700;font-size:118px;line-height:1.2"></div>
+    <div class="pill" id="s4btn" style="background:var(--teal);color:#fff;font-size:70px;padding:22px 64px"><span id="s4btni"></span><span>راسلنا على واتساب</span></div>
+    <div id="s4t2" style="font-size:54px;color:var(--mute);font-weight:400">جاهز خلال أيام</div>
+  </div>
+</div>
+
+<!-- S5: end card -->
+<div class="scene" id="s5">
+  <div class="abs center" style="left:0;right:0;top:420px">
+    <svg id="mark" width="460" height="460" viewBox="0 0 64 64"></svg>
+    <div id="s5t" style="font-weight:700;font-size:150px;line-height:1.2;margin-top:70px"></div>
+    <div class="mono" id="s5l" style="font-size:54px;color:var(--mute);margin-top:18px;letter-spacing:.04em;direction:ltr">Raqqim</div>
+  </div>
+</div>
+
+<script>
+/* ---------- helpers ---------- */
+const P={
+ upload:'<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/>',
+ award:'<circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>',
+ check:'<path d="M20 6 9 17l-5-5"/>',
+ send:'<path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/>',
+ qr:'<rect width="5" height="5" x="3" y="3" rx="1"/><rect width="5" height="5" x="16" y="3" rx="1"/><rect width="5" height="5" x="3" y="16" rx="1"/><path d="M21 16h-3a2 2 0 0 0-2 2v3"/><path d="M21 21v.01"/><path d="M12 7v3a2 2 0 0 1-2 2H7"/><path d="M3 12h.01"/><path d="M12 3h.01"/><path d="M12 16v.01"/><path d="M16 12h1"/><path d="M21 12v.01"/><path d="M12 21v-1"/>',
+ pen:'<path d="M12 20h9"/><path d="M16.376 3.622a1 1 0 0 1 3.002 3.002L7.368 18.635a2 2 0 0 1-.855.506l-2.872.838a.5.5 0 0 1-.62-.62l.838-2.872a2 2 0 0 1 .506-.854z"/>',
+ msg:'<path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>',
+ user:'<path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>'
+};
+const ic=(n,s,c,w)=>`<svg class="ic" width="${s}" height="${s}" viewBox="0 0 24 24" stroke="${c}" ${w?`style="stroke-width:${w}"`:''}>${P[n]}</svg>`;
+const anims=[];
+const E='cubic-bezier(.2,.8,.2,1)';
+function an(el,kf,start,dur,ease=E,fill='both'){const a=el.animate(kf,{delay:start*1000,duration:dur*1000,easing:ease,fill});a.pause();anims.push(a);return a}
+function pop(el,start,dur=.5,dy=40,sc=.9){return an(el,[{opacity:0,transform:`translateY(${dy}px) scale(${sc})`},{opacity:1,transform:'translateY(0) scale(1)'}],start,dur)}
+function words(el,text,start,gap=.28,dur=.45){
+  el.innerHTML='';
+  text.split(' ').forEach((w,i)=>{const s=document.createElement('span');s.className='w';s.textContent=w;el.appendChild(s);pop(s,start+i*gap,dur,50,.85)});
+}
+function sceneWin(id,s,e,fi=.25,fo=.25){
+  const el=document.getElementById(id),d=e-s,a=fi/d,b=1-fo/d;
+  const last=id==='s5';
+  an(el,[{opacity:0,offset:0},{opacity:1,offset:a},{opacity:1,offset:last?1:b},{opacity:last?1:0,offset:1}],s,d,'linear');
+}
+function qrSVG(size,seed){
+  const n=21;let r=seed*9301+49297;const rnd=()=>(r=(r*9301+49297)%233280)/233280;
+  const g=[];for(let y=0;y<n;y++){g[y]=[];for(let x=0;x<n;x++)g[y][x]=rnd()>.5}
+  const fin=(ox,oy)=>{for(let y=-1;y<8;y++)for(let x=-1;x<8;x++){const X=ox+x,Y=oy+y;if(X<0||Y<0||X>=n||Y>=n)continue;
+    const edge=x===0||x===6||y===0||y===6,core=x>=2&&x<=4&&y>=2&&y<=4;g[Y][X]=(x>=0&&x<=6&&y>=0&&y<=6)&&(edge||core)}};
+  fin(0,0);fin(n-7,0);fin(0,n-7);
+  let rects='';for(let y=0;y<n;y++)for(let x=0;x<n;x++)if(g[y][x])rects+=`<rect x="${x+2}" y="${y+2}" width="1.02" height="1.02" fill="#0e1b24"/>`;
+  return `<svg width="${size}" height="${size}" viewBox="0 0 ${n+4} ${n+4}" style="display:block"><rect width="${n+4}" height="${n+4}" fill="#fff"/>${rects}</svg>`;
+}
+const bar=(w,h,c='var(--line)')=>`<div style="width:${w};height:${h}px;border-radius:${h/2}px;background:${c}"></div>`;
+
+/* ---------- S1 (0 - 4.4) ---------- */
+sceneWin('s1',0,4.4,.01,.25);
+words(document.getElementById('s1t1'),'تكتب الشهادات',.1,.3);
+words(document.getElementById('s1t2'),'اسم اسم؟',.7,.3);
+const stack=document.getElementById('stack');
+const rots=[-4,3,-2,4,-1];
+for(let i=0;i<5;i++){
+  const c=document.createElement('div');c.className='card abs';
+  c.style.cssText=`left:0;top:${i*100}px;width:700px;height:300px;padding:34px 44px;display:flex;flex-direction:column;gap:22px;z-index:${i}`;
+  c.innerHTML=`<div style="display:flex;align-items:center;gap:20px">${ic('award',64,'var(--teal)')}${bar('180px',18,'var(--teal-l)')}</div>
+   <div class="nm" style="margin-top:8px">${bar('0px',34,'var(--ink)')}</div>${bar('420px',18)}${bar('320px',18)}`;
+  stack.appendChild(c);
+  an(c,[{opacity:0,transform:`translateY(160px) rotate(0deg) scale(.9)`},{opacity:1,transform:`translateY(0) rotate(${rots[i]}deg) scale(1)`}],1.0+i*.32,.5);
+  const nm=c.querySelector('.nm div');
+  an(nm,[{width:'0px'},{width:(240+((i*67)%160))+'px'}],1.25+i*.32,.7,'linear');
+}
+const pen=document.createElement('div');pen.className='abs';
+pen.style.cssText='left:470px;top:1px;width:132px;height:132px;border-radius:50%;background:var(--amber);display:flex;align-items:center;justify-content:center;z-index:9;border:5px solid var(--sand)';
+pen.innerHTML=ic('pen',68,'var(--ink)');stack.appendChild(pen);
+pop(pen,2.8,.45,30,.6);
+
+/* ---------- S2 (4.4 - 10.6) ---------- */
+sceneWin('s2',4.4,10.6);
+const T2=4.4;
+pop(document.getElementById('s2chip'),T2+.15,.55,40,.85);
+words(document.getElementById('s2t'),'كل الشهادات دفعة وحدة',T2+.7,.25);
+document.getElementById('s2qri').innerHTML=ic('qr',74,'var(--teal-d)');
+const grid=document.getElementById('grid');
+const cards=[];
+for(let i=0;i<9;i++){
+  const c=document.createElement('div');c.className='card abs';
+  const col=i%3,row=Math.floor(i/3);
+  c.style.cssText=`left:${col*300}px;top:${row*230}px;width:276px;height:190px;padding:22px 24px;display:flex;flex-direction:column;gap:14px;border-radius:26px`;
+  c.innerHTML=`<div style="display:flex;align-items:center;gap:12px">${ic('award',34,'var(--teal)')}${bar('90px',10,'var(--teal-l)')}</div>
+   ${bar(`${130+((i*37)%70)}px`,16,'var(--ink)')}${bar('150px',10)}
+   <div class="abs" style="left:22px;bottom:18px;border:2px solid var(--line);border-radius:6px;overflow:hidden">${qrSVG(58,i+3)}</div>`;
+  grid.appendChild(c);cards.push(c);
+  pop(c,T2+1.5+(row*.45)+(col*.14),.45,50,.82);
+}
+const seal=document.createElement('div');seal.className='abs';
+seal.style.cssText='right:20px;bottom:18px;width:34px;height:34px;border-radius:50%;background:var(--amber)';
+cards[0].appendChild(seal);
+an(cards[4],[{borderColor:'#ded7cb',transform:'scale(1)'},{borderColor:'#0f7a7e',transform:'scale(1.06)'},{borderColor:'#0f7a7e',transform:'scale(1)'}],T2+4.2,.9,E,'forwards');
+pop(document.getElementById('s2qr'),T2+4.3,.5,30,.85);
+
+/* ---------- S3 (10.6 - 21.6) ---------- */
+sceneWin('s3',10.6,21.6);
+const T3=10.6;
+document.getElementById('s3award').innerHTML=ic('award',64,'#fff');
+words(document.getElementById('s3tt'),'خطوات من هاتفك',T3+.9,.22);
+pop(document.getElementById('s3n'),T3+.2,.4,30,.7);
+pop(document.getElementById('phone'),T3+.3,.7,120,.95);
+const dots=document.getElementById('dots'),panels=document.getElementById('panels');
+const steps=[{s:T3+1.6,e:T3+4.6},{s:T3+4.6,e:T3+7.6},{s:T3+7.6,e:T3+10.8}];
+steps.forEach((st,i)=>{
+  const d=document.createElement('div');d.className='mono';
+  d.style.cssText='width:72px;height:72px;border-radius:50%;border:4px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:36px;color:var(--mute);background:#fff';
+  d.textContent=i+1;dots.appendChild(d);
+  an(d,[{background:'#fff',borderColor:'#ded7cb',color:'#5e6b72'},{background:'#0f7a7e',borderColor:'#0f7a7e',color:'#fff'}],st.s,.3,E,'both');
+  if(i<2)an(d,[{background:'#0f7a7e',borderColor:'#0f7a7e',color:'#fff'},{background:'#d8eded',borderColor:'#0f7a7e',color:'#0b5f62'}],st.e,.3,E,'forwards');
+});
+function panel(i,html){
+  const p=document.createElement('div');p.className='abs';p.style.cssText='inset:0;padding:0 36px;display:flex;flex-direction:column;align-items:center;gap:22px;opacity:0';
+  p.innerHTML=html;panels.appendChild(p);
+  const st=steps[i],d=st.e-st.s,last=i===2;
+  an(p,[{opacity:0,transform:'translateX(-60px)',offset:0},{opacity:1,transform:'translateX(0)',offset:.1},{opacity:1,transform:'translateX(0)',offset:last?1:.92},{opacity:last?1:0,transform:last?'translateX(0)':'translateX(60px)',offset:1}],st.s,d,'ease-out');
+  return p;
+}
+const btn=t=>`<div class="btn pill" style="position:absolute;bottom:20px;left:36px;right:36px;height:112px;justify-content:center;background:var(--teal);color:#fff;font-size:46px">${t}</div>`;
+const nameRow=(k,icn,col)=>`<div class="row card" style="width:100%;height:92px;border-radius:24px;padding:0 26px;display:flex;align-items:center;gap:20px">${ic('user',40,'var(--mute)')}${bar(`${190+((k*53)%130)}px`,16,'var(--line)')}<span class="rk" style="margin-inline-start:auto">${ic(icn,44,col)}</span></div>`;
+// panel 1
+const p1=panel(0,`<div class="drop" style="width:100%;height:190px;border:5px dashed var(--teal);border-radius:32px;background:var(--teal-l);display:flex;align-items:center;justify-content:center">${ic('upload',96,'var(--teal-d)')}</div>${[0,1,2,3].map(k=>nameRow(k,'check','#17784f')).join('')}${btn('ارفع الأسماء')}`);
+p1.querySelectorAll('.row').forEach((r,k)=>pop(r,steps[0].s+.7+k*.35,.4,30,.92));
+p1.querySelectorAll('.row .rk').forEach((r,k)=>pop(r,steps[0].s+1.0+k*.35,.3,0,.4));
+// panel 2
+const thumb=(k)=>`<div class="th card" style="width:236px;height:230px;border-radius:26px;padding:24px;display:flex;flex-direction:column;gap:14px;align-items:flex-start;position:relative">${ic('award',48,'var(--teal)')}${bar('120px',14,k===1?'var(--teal)':'var(--line)')}${bar('90px',12)}<div class="abs" style="left:18px;bottom:16px;border:2px solid var(--line);border-radius:6px;overflow:hidden">${qrSVG(46,k+11)}</div></div>`;
+const p2=panel(1,`<div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;width:100%">${[0,1,2,3].map(thumb).join('')}</div>${btn('اختر التصميم')}`);
+p2.querySelectorAll('.th').forEach((r,k)=>pop(r,steps[1].s+.4+k*.2,.4,30,.9));
+an(p2.querySelectorAll('.th')[1],[{borderColor:'#ded7cb',transform:'scale(1)'},{borderColor:'#0f7a7e',transform:'scale(1.05)'},{borderColor:'#0f7a7e',transform:'scale(1)'}],steps[1].s+1.5,.7,E,'forwards');
+// panel 3
+const p3=panel(2,`${[0,1,2,3,4].map(k=>nameRow(k,'send','#5e6b72')).join('')}${btn('وزّع')}`);
+p3.querySelectorAll('.row').forEach((r,k)=>pop(r,steps[2].s+.3+k*.2,.4,30,.92));
+p3.querySelectorAll('.row .rk').forEach((r,k)=>{
+  an(r,[{opacity:1,transform:'scale(1)'},{opacity:0,transform:'scale(.4)'}],steps[2].s+1.4+k*.4,.2,E,'forwards');
+  const ck=document.createElement('span');ck.className='abs';ck.style.cssText='left:26px;top:24px;opacity:0';ck.innerHTML=ic('check',44,'#17784f');
+  r.parentElement.appendChild(ck);
+  an(ck,[{opacity:0,transform:'scale(.3)'},{opacity:1,transform:'scale(1)'}],steps[2].s+1.55+k*.4,.3,E,'both');
+});
+p3.querySelectorAll('.row').forEach(r=>r.style.position='relative');
+[p1,p2,p3].forEach((p,i)=>{const b=p.querySelector('.btn');an(b,[{transform:'scale(1)'},{transform:'scale(.94)'},{transform:'scale(1)'}],steps[i].e-.8,.4,'ease-in-out','both')});
+function s3counter(t){
+  const u=Math.max(0,Math.min(1,(t-(T3+.35))/1.1));
+  document.getElementById('s3n').textContent=String(Math.min(3,Math.floor(u*3.999)));
+}
+
+/* ---------- S4 (21.6 - 26.0) ---------- */
+sceneWin('s4',21.6,26.0);
+const T4=21.6;
+document.getElementById('s4ic').innerHTML=ic('msg',130,'#fff');
+document.getElementById('s4btni').innerHTML=ic('send',64,'#fff');
+pop(document.getElementById('s4card'),T4+.15,.6,60,.94);
+words(document.getElementById('s4t1'),'جاهز تبدأ؟',T4+.6,.28);
+pop(document.getElementById('s4btn'),T4+1.4,.5,40,.85);
+pop(document.getElementById('s4t2'),T4+2.0,.5,20,.95);
+pop(document.getElementById('s4dot'),T4+1.0,.4,0,.2);
+an(document.getElementById('s4btn'),[{transform:'scale(1)'},{transform:'scale(1.06)'},{transform:'scale(1)'}],T4+2.6,.8,'ease-in-out','forwards');
+
+/* ---------- S5 (26.0 - 30.0) ---------- */
+sceneWin('s5',26.0,30.0,.25,0);
+const T5=26.0;
+const mark=document.getElementById('mark');
+mark.innerHTML='<rect id="mk0" width="64" height="64" rx="16" fill="#0f7a7e"/>';
+const sq=[[14,40],[27,40],[40,40],[27,27],[40,27],[40,14]];
+sq.forEach((p,i)=>{const r=document.createElementNS('http://www.w3.org/2000/svg','rect');
+  r.setAttribute('x',p[0]);r.setAttribute('y',p[1]);r.setAttribute('width',10);r.setAttribute('height',10);r.setAttribute('rx',2.5);
+  r.setAttribute('fill',i===5?'#f0a93b':'#faf7f2');mark.appendChild(r);
+  an(r,[{opacity:0,transform:'translateY(14px)'},{opacity:1,transform:'translateY(0)'}],T5+.8+i*.28,.35);});
+an(mark.firstChild,[{opacity:0,transform:'scale(.7)',transformOrigin:'32px 32px'},{opacity:1,transform:'scale(1)',transformOrigin:'32px 32px'}],T5+.2,.5);
+words(document.getElementById('s5t'),'رقّم شغلك.',T5+2.5,.3);
+pop(document.getElementById('s5l'),T5+3.1,.5,20,.95);
+
+/* ---------- seek ---------- */
+window.DURATION=30.0;
+window.seek=t=>{anims.forEach(a=>{a.currentTime=t*1000});s3counter(t)};
+window.seek(0);
+</script>
+</body>
+</html>
