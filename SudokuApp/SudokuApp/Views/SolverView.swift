@@ -103,6 +103,8 @@ struct SolverView: View {
         }
         .padding()
         .background(Theme.background.ignoresSafeArea())
+        #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
+        #endif
     }
 }

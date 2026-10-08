@@ -121,7 +121,9 @@ struct PlayView: View {
         }
         .padding()
         .background(Theme.background.ignoresSafeArea())
+        #if os(iOS)
         .navigationBarTitleDisplayMode(.inline)
+        #endif
         .onAppear {
             if model.puzzle == nil { model.load() }
         }
