@@ -1,0 +1,21 @@
+name: Sudoku iOS
+
+on:
+  push:
+    paths: ["SudokuApp/**", ".github/workflows/sudoku-ios.yml"]
+  pull_request:
+    paths: ["SudokuApp/**", ".github/workflows/sudoku-ios.yml"]
+
+jobs:
+  test:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and test
+        working-directory: SudokuApp
+        run: |
+          xcodebuild test \
+            -project SudokuApp.xcodeproj \
+            -scheme SudokuApp \
+            -destination "platform=iOS Simulator,name=iPhone 16" \
+            CODE_SIGNING_ALLOWED=NO
